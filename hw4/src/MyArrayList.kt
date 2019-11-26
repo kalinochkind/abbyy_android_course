@@ -37,4 +37,11 @@ class MyArrayList<T> {
     elements[--length] = null
   }
 
+  operator fun get(position: Int): T {
+    if (position < 0 || position >= length) {
+      throw IndexOutOfBoundsException()
+    }
+    return elements[position]!! as T
+  }
+
 }

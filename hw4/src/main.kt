@@ -18,4 +18,5 @@ fun main() {
     a.delete(12)
     a.delete(5)
 
+    println(a[3])
 }
