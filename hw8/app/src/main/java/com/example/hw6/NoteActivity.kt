@@ -13,7 +13,7 @@ class NoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_note)
 
         val noteId = intent.getSerializableExtra("note") as Long?
-        title = "Note " + noteId.toString()
+        title = getString(R.string.note_title)
 
         val view = findViewById<View>(R.id.coordinatorLayout)
 

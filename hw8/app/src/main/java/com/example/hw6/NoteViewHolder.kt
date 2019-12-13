@@ -1,7 +1,6 @@
 package com.example.hw6
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.note_list_item.view.*
@@ -26,7 +25,7 @@ class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.On
     fun bind(note: Note) {
         this.note = note
         view.noteText.text = note.text
-        view.noteDate.text = SimpleDateFormat("dd.MM.yyyy").format(note.date)
+        view.noteDate.text = SimpleDateFormat(view.context.getString(R.string.date_format)).format(note.date)
         view.noteImage.setImageDrawable(view.context.getDrawable(note.drawableRes))
     }
 

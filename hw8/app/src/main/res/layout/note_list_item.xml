@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/card_height"
     android:layout_marginStart="@dimen/default_margin"
     android:layout_marginTop="@dimen/small_margin"
     android:layout_marginEnd="@dimen/default_margin"
@@ -14,11 +14,7 @@
     android:focusableInTouchMode="false"
     android:foreground="?android:attr/selectableItemBackground"
     android:visibility="visible"
-    app:cardCornerRadius="@dimen/card_corner_radius"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:cardCornerRadius="@dimen/card_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,8 +30,7 @@
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/image1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/noteText"
@@ -48,7 +43,7 @@
             android:ellipsize="end"
             android:maxLines="4"
             android:singleLine="false"
-            android:text="@string/lorem_ipsum"
+            android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/noteImage"
@@ -60,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
-            android:text="@string/date"
+            android:text=""
             app:layout_constraintStart_toEndOf="@+id/noteImage"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
