@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">hw6</string>
+    <string name="title_activity_note">NoteActivity</string>
+    <string name="notes_title">Notes</string>
+    <string name="note_title">Note</string>
+    <string name="date_format">dd.MM.yyyy</string>
+</resources>
