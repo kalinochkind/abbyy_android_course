@@ -21,5 +21,4 @@ class NoteAdapter(private val notes: List<Note>, private val clickHandler: (Long
         holder.bind(note)
     }
 
-
 }

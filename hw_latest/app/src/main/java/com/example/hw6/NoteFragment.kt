@@ -10,7 +10,15 @@ import kotlinx.android.synthetic.main.fragment_note.view.*
 class NoteFragment : Fragment() {
 
     companion object {
-        const val NOTE_ID = "noteId"
+        private const val NOTE_ID = "noteId"
+
+        fun newInstance(id: Long): NoteFragment {
+            val fragment = NoteFragment()
+            val args = Bundle()
+            args.putLong(NOTE_ID, id)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
     override fun onCreateView(
@@ -18,14 +26,18 @@ class NoteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_note, container, false)
+        return inflater.inflate(R.layout.fragment_note, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val note = NoteRepository.getNoteWithId(arguments?.getLong(NOTE_ID, 1) ?: 1)
         if (note != null) {
             view.noteText.text = note.text
             view.noteImage.setImageDrawable(activity?.getDrawable(note.drawableRes))
         }
-        return view
     }
+
+    fun getNoteId(): Long? = arguments?.getLong(NOTE_ID)
 
 }

@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:paddingEnd="@dimen/small_margin"
         android:scrollbars="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
         tools:ignore="RtlSymmetry" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 package com.example.hw6
 
-import java.util.*
+import java.util.Date
 
 
 object NoteRepository {
