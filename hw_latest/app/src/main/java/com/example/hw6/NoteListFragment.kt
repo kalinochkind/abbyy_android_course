@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class NoteListFragment : Fragment() {
 
     interface OpenNoteListener {
-        fun openNote(id: Long)
+        fun openNote(id: Int)
     }
 
     override fun onCreateView(
@@ -22,7 +22,7 @@ class NoteListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = NoteAdapter(NoteRepository.listNotes()) {
+        recyclerView.adapter = NoteAdapter(App.noteRepository.listNotes()) {
             val listener = activity as OpenNoteListener
             listener.openNote(it)
         }

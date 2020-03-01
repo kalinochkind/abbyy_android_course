@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), NoteListFragment.OpenNoteListener {
 
     }
 
-    override fun openNote(id: Long) {
+    override fun openNote(id: Int) {
         supportFragmentManager.popBackStackImmediate(NOTE_BACK_STACK_NAME,
             FragmentManager.POP_BACK_STACK_INCLUSIVE)
         val fragmentTransaction = supportFragmentManager.beginTransaction()

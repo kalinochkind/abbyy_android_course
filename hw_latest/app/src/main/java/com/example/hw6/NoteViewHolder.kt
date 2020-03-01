@@ -2,10 +2,11 @@ package com.example.hw6
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw6.data.Note
 import kotlinx.android.synthetic.main.note_list_item.view.*
 import java.text.SimpleDateFormat
 
-class NoteViewHolder(itemView: View, private val clickHandler: (Long) -> Unit):
+class NoteViewHolder(itemView: View, private val clickHandler: (Int) -> Unit):
     RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
     private var view = itemView

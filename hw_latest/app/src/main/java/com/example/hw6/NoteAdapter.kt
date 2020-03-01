@@ -3,9 +3,10 @@ package com.example.hw6
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw6.data.Note
 
 
-class NoteAdapter(private val notes: List<Note>, private val clickHandler: (Long) -> Unit):
+class NoteAdapter(private val notes: List<Note>, private val clickHandler: (Int) -> Unit):
     RecyclerView.Adapter<NoteViewHolder>() {
 
     override fun getItemCount(): Int = notes.size

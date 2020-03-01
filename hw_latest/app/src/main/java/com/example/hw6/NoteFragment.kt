@@ -12,10 +12,10 @@ class NoteFragment : Fragment() {
     companion object {
         private const val NOTE_ID = "noteId"
 
-        fun newInstance(id: Long): NoteFragment {
+        fun newInstance(id: Int): NoteFragment {
             val fragment = NoteFragment()
             val args = Bundle()
-            args.putLong(NOTE_ID, id)
+            args.putInt(NOTE_ID, id)
             fragment.arguments = args
             return fragment
         }
@@ -31,13 +31,13 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val note = NoteRepository.getNoteWithId(arguments?.getLong(NOTE_ID, 1) ?: 1)
+        val note = App.noteRepository.getNoteWithId(arguments?.getInt(NOTE_ID, 1) ?: 1)
         if (note != null) {
             view.noteText.text = note.text
             view.noteImage.setImageDrawable(activity?.getDrawable(note.drawableRes))
         }
     }
 
-    fun getNoteId(): Long? = arguments?.getLong(NOTE_ID)
+    fun getNoteId(): Int? = arguments?.getInt(NOTE_ID)
 
 }
