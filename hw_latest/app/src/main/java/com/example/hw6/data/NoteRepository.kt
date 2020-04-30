@@ -17,7 +17,6 @@ class NoteRepository(private val helper: SQLiteOpenHelper) {
     }
 
     fun listNotes(): List<Note> {
-
         val db = helper.readableDatabase
         val sortOrder = "${BaseColumns._ID} ASC"
         val cursor = db.query(NoteContract.TABLE_NAME, NOTE_PROJECTION, null, null,
