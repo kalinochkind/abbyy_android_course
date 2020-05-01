@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_note.view.*
 import kotlinx.coroutines.*
+import java.io.File
 
 class NoteFragment : Fragment() {
 
@@ -39,7 +41,7 @@ class NoteFragment : Fragment() {
             val note = queryNote(noteId)
             if (note != null) {
                 view.noteText.text = note.text
-                view.noteImage.setImageDrawable(activity?.getDrawable(note.drawableRes))
+                Picasso.with(context).load(File(note.drawablePath)).fit().centerInside().into(view.noteImage)
             }
         }
     }

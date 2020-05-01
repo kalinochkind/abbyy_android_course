@@ -24,13 +24,7 @@ class NoteListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = NoteAdapter(emptyList()) {}
-        job = GlobalScope.launch(context = Dispatchers.Main) {
-            val notes = queryNotes()
-            recyclerView.adapter = NoteAdapter(notes) {
-                val listener = activity as OpenNoteListener
-                listener.openNote(it)
-            }
-        }
+        populateView(recyclerView)
         return view
     }
 
@@ -41,6 +35,24 @@ class NoteListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         job?.cancel()
+    }
+
+    private fun populateView(recyclerView: RecyclerView) {
+        job = GlobalScope.launch(context = Dispatchers.Main) {
+            val scroll = recyclerView.scrollY
+            val notes = queryNotes()
+            recyclerView.adapter = NoteAdapter(notes) {
+                val listener = activity as OpenNoteListener
+                listener.openNote(it)
+            }
+            recyclerView.scrollY = scroll
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val recyclerView = activity?.findViewById<RecyclerView>(R.id.recyclerView) ?: return
+        populateView(recyclerView)
     }
 
 }
