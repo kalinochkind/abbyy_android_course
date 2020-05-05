@@ -2,6 +2,7 @@ package com.example.hw6
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.camera.view.CameraView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.google.firebase.FirebaseApp
 import kotlinx.coroutines.*
 import java.io.File
 import java.util.*
@@ -82,7 +84,8 @@ class CameraActivity : AppCompatActivity() {
             object: ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     job = GlobalScope.launch(context = Dispatchers.Main) {
-                        addNote(file.absolutePath)
+                        val text = getImageText(file)
+                        addNote(file.absolutePath, text ?: "My new note")
                         finish()
                     }
                 }
@@ -95,8 +98,12 @@ class CameraActivity : AppCompatActivity() {
 
     private fun generatePictureFile() = File(filesDir, UUID.randomUUID().toString())
 
-    suspend fun addNote(image: String) = withContext(Dispatchers.IO) {
-        return@withContext App.noteRepository.addNote("My new note", image)
+    suspend fun getImageText(image: File) = withContext(Dispatchers.IO) {
+        return@withContext ImageAnalyzer.getText(Uri.fromFile(image), this@CameraActivity)
+    }
+
+    suspend fun addNote(image: String, text: String) = withContext(Dispatchers.IO) {
+        return@withContext App.noteRepository.addNote(text, image)
     }
 
     override fun onDestroy() {
