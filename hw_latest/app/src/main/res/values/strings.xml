@@ -4,4 +4,6 @@
     <string name="notes_title">Notes</string>
     <string name="note_title">Note</string>
     <string name="date_format">dd.MM.yyyy</string>
+    <string name="need_permission">Allow camera permission to use camera</string>
+    <string name="permission_in_settings">Allow camera permission in system settings</string>
 </resources>

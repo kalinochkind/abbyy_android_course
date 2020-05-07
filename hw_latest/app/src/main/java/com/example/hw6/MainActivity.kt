@@ -1,5 +1,6 @@
 package com.example.hw6
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity(), NoteListFragment.OpenNoteListener {
             R.id.fragment_container
         fragmentTransaction.replace(container, fragment, NOTE_FRAGMENT_TAG)
         fragmentTransaction.commit()
+    }
+
+    fun openCameraActivity(view: View?) {
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
     }
 
 }
