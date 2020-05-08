@@ -57,6 +57,15 @@
             android:text=""
             app:layout_constraintStart_toEndOf="@+id/noteImage"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/noteMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_more_vert_black_24dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -12,4 +12,6 @@
     <dimen name="card_corner_radius">4dp</dimen>
         
     <dimen name="card_image_size">96dp</dimen>
+
+    <dimen name="small_button_size">24dp</dimen>
 </resources>

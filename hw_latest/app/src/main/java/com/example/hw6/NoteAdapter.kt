@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hw6.data.Note
 
 
-class NoteAdapter(private val notes: List<Note>, private val clickHandler: (Int) -> Unit):
+class NoteAdapter(private val notes: List<Note>, private val actionHandler: NoteViewHolder.NoteActionHandler):
     RecyclerView.Adapter<NoteViewHolder>() {
 
     override fun getItemCount(): Int = notes.size
@@ -14,7 +14,7 @@ class NoteAdapter(private val notes: List<Note>, private val clickHandler: (Int)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.note_list_item,
             parent, false)
-        return NoteViewHolder(inflatedView, clickHandler)
+        return NoteViewHolder(inflatedView, actionHandler)
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {

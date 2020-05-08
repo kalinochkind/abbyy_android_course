@@ -14,7 +14,6 @@ import androidx.camera.view.CameraView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import com.google.firebase.FirebaseApp
 import kotlinx.coroutines.*
 import java.io.File
 import java.util.*
@@ -23,10 +22,10 @@ import java.util.*
 class CameraActivity : AppCompatActivity() {
 
     companion object {
-        const val CAMERA_REQUEST_CODE = 0;
+        const val CAMERA_REQUEST_CODE = 0
     }
 
-    var cameraView: CameraView? = null
+    private var cameraView: CameraView? = null
     var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

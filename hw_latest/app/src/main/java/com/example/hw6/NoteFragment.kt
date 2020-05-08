@@ -48,7 +48,7 @@ class NoteFragment : Fragment() {
 
     fun getNoteId(): Int? = arguments?.getInt(NOTE_ID)
 
-    suspend fun queryNote(id: Int) = withContext(Dispatchers.IO) {
+    private suspend fun queryNote(id: Int) = withContext(Dispatchers.IO) {
         return@withContext App.noteRepository.getNoteWithId(id)
     }
 

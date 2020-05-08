@@ -3,6 +3,7 @@ package com.example.hw6.data
 import android.content.ContentValues
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import java.io.File
 import java.util.Date
 
 
@@ -51,11 +52,11 @@ class NoteRepository(private val helper: SQLiteOpenHelper) {
         cursor.use {
             with(it) {
                 if (moveToFirst()) {
-                    val id = getInt(getColumnIndex(BaseColumns._ID))
+                    val noteId = getInt(getColumnIndex(BaseColumns._ID))
                     val date = Date(getLong(getColumnIndex(NoteContract.NoteEntry.DATE)))
                     val text = getString(getColumnIndex(NoteContract.NoteEntry.TEXT))
                     val image = getString(getColumnIndex(NoteContract.NoteEntry.IMAGE))
-                    return Note(id, date, text, image)
+                    return Note(noteId, date, text, image)
                 }
                 return null
             }
@@ -70,6 +71,15 @@ class NoteRepository(private val helper: SQLiteOpenHelper) {
         values.put(NoteContract.NoteEntry.IMAGE, image)
         values.put(NoteContract.NoteEntry.DATE, Date().time)
         db.insert(NoteContract.TABLE_NAME, null, values)
+    }
+
+    fun deleteNote(id: Int) {
+        val note = getNoteWithId(id)
+        val db = helper.writableDatabase
+        db.delete(NoteContract.TABLE_NAME, "${BaseColumns._ID} = ?", arrayOf(id.toString()))
+        note?.let {
+            File(note.drawablePath).delete()
+        }
     }
 
 }
